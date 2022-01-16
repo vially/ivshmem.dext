@@ -1,0 +1,19 @@
+#ifndef IVSHMEMDriverUserClient_h
+#define IVSHMEMDriverUserClient_h
+
+#include <Availability.h>
+#include <DriverKit/IOUserClient.iig>
+#include <DriverKit/IOService.iig>
+
+class IVSHMEMDriverUserClient: public IOUserClient
+{
+public:
+    virtual bool init(void) override;
+    virtual kern_return_t Start(IOService* provider) override;
+    virtual kern_return_t Stop(IOService* provider) override;
+    virtual void free(void) override;
+
+    virtual kern_return_t CopyClientMemoryForType(uint64_t type, uint64_t *options, IOMemoryDescriptor **memory) override;
+};
+
+#endif /* IVSHMEMDriverUserClient_h */
